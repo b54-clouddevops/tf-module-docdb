@@ -1,3 +1,0 @@
-docdb:
-    source:  "https://github.com/b54-clouddevops/tf-module-docdb.git"
-    version: "main"              
