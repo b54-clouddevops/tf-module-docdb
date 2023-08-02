@@ -3,6 +3,7 @@
 resource "null_resource" "docdb_schema" {
        
   depends_on = [aws_docdb_cluster.docdb , aws_docdb_cluster_instance.cluster_instances]
+  
   provisioner "local-exec" {
          command = <<EOF
             cd /tmp 
@@ -11,6 +12,6 @@ resource "null_resource" "docdb_schema" {
             unzip -o /tmp/mongodb.zip 
             mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile global-bundle.pem --username admin1 --password roboshop1  < catalogue.js
             mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile global-bundle.pem --username admin1 --password roboshop1  < user.js
-         EOF 
+        EOF 
     }
 }
