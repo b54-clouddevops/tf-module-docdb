@@ -9,7 +9,7 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
-resource "aws_secretsmanager_secret" "secrets" {
+data "aws_secretsmanager_secret" "secrets" {
   name = "robot/secrets"
 }
 
