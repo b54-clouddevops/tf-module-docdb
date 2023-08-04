@@ -8,3 +8,11 @@ data "terraform_remote_state" "vpc" {
     region = "us-east-1"
   }
 }
+
+resource "aws_secretsmanager_secret" "secrets" {
+  name = "robot/secrets"
+}
+
+output "data" {
+  value = data.aws_secretsmanager_secret.secrets
+}
